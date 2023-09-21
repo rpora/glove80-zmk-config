@@ -5,6 +5,13 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define BASE 0
+#define LOWER 1
+#define MAGIC 2
+#define QWERTY 3
+#define GAMING 4
+#define TEST 5
+
 / {
     /* Glove80 system behavior & macros */
     behaviors {
@@ -17,6 +24,8 @@
             tapping-term-ms = <200>;
             bindings = <&mo 1>, <&to 1>;
         };
+
+
     };
 };
 
@@ -89,7 +98,6 @@
     keymap {
         compatible = "zmk,keymap";
 
-
         layer_Base {
             bindings = <
      &kp F1  &kp F2    &kp F3    &kp F4     &kp F5                                                                                 &kp F6     &kp F7    &kp F8    &kp F9    &kp F10
@@ -97,7 +105,7 @@
     &kp TAB   &kp Q     &kp W     &kp F      &kp P   &kp G                                                                  &kp J   &kp L      &kp U     &kp Y  &kp SEMI   &kp BSLH
     &kp ESC   &kp A     &kp R     &kp S      &kp T   &kp D                                                                  &kp H   &kp N      &kp E     &kp I     &kp O    &kp SQT
   &kp GRAVE   &kp Z     &kp X     &kp C      &kp V   &kp B  &sk LSHFT  &kp HOME   &kp LALT   &kp RALT  &kp DEL  &sk RSHFT   &kp K   &kp M  &kp COMMA   &kp DOT  &kp FSLH    &kp F11
- &magic 2 0  &lower  &kp CAPS  &kp LEFT  &kp RIGHT           &kp BSPC  &kp LGUI  &kp LCTRL  &kp RCTRL  &kp RET  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT    &kp F12
+ &magic 2 0  &lower  &kp CAPS  &kp LEFT  &kp RIGHT           &lt TEST BSPC  &kp LGUI  &kp LCTRL  &kp RCTRL  &kp RET  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT    &kp F12
             >;
         };
 
@@ -108,7 +116,7 @@
      &kp CAPS         &none           &none    &kp UP_ARROW            &none    &kp END                                                  &kp RIGHT_PARENTHESIS   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
        &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                            &kp PERCENT   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
        &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans  &trans  &trans  &trans  &trans              &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
-   &magic 2 0         &to 0         &kp INS         &kp F11          &kp F12             &trans  &trans   &to 3   &to 4  &trans  &trans                          &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
+   &magic 2 0         &to BASE        &kp INS       &kp F11          &kp F12             &trans  &trans  &to QWERTY &to GAMING  &trans  &trans                          &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
             >;
         };
 
@@ -130,7 +138,7 @@
     &kp TAB   &kp Q    &kp W     &kp E      &kp R   &kp T                                                   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
     &kp ESC   &kp A    &kp S     &kp D      &kp F   &kp G                                                   &kp H   &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
   &kp GRAVE   &kp Z    &kp X     &kp C      &kp V   &kp B  &trans  &trans  &trans  &trans  &trans  &trans   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp PG_UP
- &magic 2 0   &to 0  &kp END  &kp LEFT  &kp RIGHT          &trans  &trans  &trans  &trans  &trans  &trans          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
+ &magic 2 0   &to BASE  &kp END  &kp LEFT  &kp RIGHT          &trans  &trans  &trans  &trans  &trans  &trans          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT  &kp PG_DN
             >;
         };
 
@@ -140,10 +148,20 @@
   &kp EQUAL     &kp N1   &kp N2  &kp N3  &kp N4  &kp N5                                                          &trans  &trans  &trans  &trans  &trans  &trans
     &kp TAB      &kp G    &kp Q   &kp W   &kp E   &kp R                                                          &trans  &trans  &trans  &trans  &trans  &trans
     &kp ESC  &kp LSHFT    &kp A   &kp S   &kp D   &kp F                                                          &trans  &trans  &trans  &trans  &trans  &trans
-  &kp LSHFT      &kp Z    &kp X   &kp C   &kp V   &kp B  &kp LCTRL  &kp LALT      &to 0  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+  &kp LSHFT      &kp Z    &kp X   &kp C   &kp V   &kp B  &kp LCTRL  &kp LALT      &to BASE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
  &magic 2 0   &kp HOME  &kp END   &kp O   &kp J              &kp M     &kp N  &kp SPACE  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
+        layer_Test {
+            bindings = <
+     &kp F1  &kp F2    &kp F3    &kp F4     &kp F5                                                                                 &kp F6     &kp F7    &kp F8    &kp F9    &kp F10
+  &kp EQUAL  &kp N1    &kp N2    &kp N3     &kp N4  &kp N5                                                                 &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
+    &kp TAB   &kp n     &kp W     &kp F      &kp P   &kp G                                                                  &kp J   &kp L      &kp U     &kp Y  &kp SEMI   &kp BSLH
+    &kp ESC   &kp A     &kp R     &kp S      &kp T   &kp D                                                                  &kp H   &kp N      &kp E     &kp I     &kp O    &kp SQT
+  &kp GRAVE   &kp Z     &kp X     &kp C      &kp V   &kp B  &sk LSHFT  &kp HOME   &kp LALT   &kp RALT  &kp DEL  &sk RSHFT   &kp K   &kp M  &kp COMMA   &kp DOT  &kp FSLH    &kp F11
+ &magic 2 0  &lower  &kp CAPS  &kp LEFT  &kp RIGHT           &kp BSPC  &kp LGUI  &kp LCTRL  &kp RCTRL  &kp RET  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT    &kp F12
+            >;
+        };
     };
 };
