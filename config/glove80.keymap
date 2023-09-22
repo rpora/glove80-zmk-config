@@ -29,7 +29,7 @@
             label = "TAP_DANCE_BRACKETS";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt m_brackets LEFT_BRACKET>, <&kp RIGHT_BRACKET>;
+            bindings = <&mt &m_brackets LEFT_BRACKET>, <&kp RIGHT_BRACKET>;
         };
 
         td_braces: tap_dance_braces {
@@ -37,7 +37,7 @@
             label = "TAP_DANCE_BRACES";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt m_braces LEFT_BRACE>, <&kp RIGHT_BRACE>;
+            bindings = <&mt &macro_tap &kp LEFT_BRACKET &kp RIGHT_BRACKET LEFT_BRACE>, <&kp RIGHT_BRACE>;
         };
     };
 };
