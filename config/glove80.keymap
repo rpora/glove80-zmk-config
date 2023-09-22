@@ -33,15 +33,14 @@
         };
 
         td_braces: tap_dance_braces {
-                    compatible = "zmk,behavior-tap-dance";
-                    label = "TAP_DANCE_BRACES";
-                    #binding-cells = <0>;
-                    tapping-term-ms = <200>;
-                    bindings = <&mt &m_braces RIGHT_BRACE>, <&kp LEFT_BRACE>;
-                };
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_BRACES";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mt &m_braces RIGHT_BRACE>, <&kp LEFT_BRACE>;
+        };
     };
 };
-]
 
 / {
     macros {
